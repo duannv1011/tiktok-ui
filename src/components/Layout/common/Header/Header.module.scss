@@ -1,0 +1,95 @@
+.wrapper {
+    --search-border-radius: 92px;
+    --search-height: 46px;
+    --search-top-spacer: 9px;
+    --search-button-width: 52px;
+    width: 100%;
+    height: var(--default-layout-header-height, 60px);
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+    display: flex;
+    justify-content: center;
+}
+
+.inner {
+    height: 100%;
+    width: var(--default-layout-width, 1150px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+}
+
+.search,
+.search-result {
+    width: 361px;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    height: var(--search-height);
+    background-color: #f1f1f2;
+    border-radius: var(--search-border-radius);
+    border: 1.5px solid transparent;
+    input {
+        flex: 1;
+        height: 100%;
+        color: var(--black);
+        font-size: 1.6rem;
+        background-color: transparent;
+        caret-color: var(--red);
+    }
+    input:not(:placeholder-shown) ~ .search-button {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+    input:is(:placeholder-shown) ~ .search-clear {
+        display: none;
+    }
+    &::after {
+        content: '';
+        top: var(--search-top-spacer);
+        right: var(--search-button-width);
+        height: calc(var(--search-height) - (var(--search-top-spacer) * 2));
+        width: 1px;
+        position: absolute;
+        background-color: black;
+    }
+    &:focus-within {
+        border: solid rgba(22, 24, 35, 0.2);
+    }
+}
+.search-result {
+    position: absolute;
+    transform: translateX(-43%);
+    padding-top: 8px;
+}
+.search-clear,
+.search-loading {
+    position: absolute;
+    right: calc(var(--search-button-width) + 16px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+}
+.search-button {
+    height: 100%;
+    width: var(--search-button-width);
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    font-size: 1.8rem;
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+    }
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+        cursor: pointer;
+    }
+}
+.search-tilte {
+    padding: 5px 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
+}
